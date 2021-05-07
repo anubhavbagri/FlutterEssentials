@@ -17,8 +17,33 @@ class Homepage extends StatelessWidget {
       appBar: AppBar(
         title: Text("Awesome App"),
       ),
-      body: Container(
-        child: Center(child: Text("Hi Flutter")),
+      body: Center(
+        child: Container(
+          padding: const EdgeInsets.all(8),
+          // margin: const EdgeInsets.all(8),
+          // alignment: Alignment.bottomLeft,
+          alignment: Alignment.center,
+          // color: Colors.greenAccent, : will throw error if we use decoration simultaneously
+          width: 100,
+          height: 100,
+          decoration: BoxDecoration(
+            // shape: BoxShape.circle,
+            borderRadius: BorderRadius.circular(10),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey[600],
+                blurRadius: 5,
+                // spreadRadius: 10
+                offset: Offset(2.0, 5.0)
+              )
+            ],
+            color: Colors.amberAccent,
+            gradient: LinearGradient(
+              colors: [Colors.yellow, Colors.pink]
+            ),
+          ),
+          child: Text("I am a Box"),
+        ),
       ),
     );
   }
