@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 // import 'package:flutter/cupertino.dart';
 
-
-
-void main(){
+void main() {
   runApp(MaterialApp(
-    title: "Awesome App", //this text shows when you press the recent-apps button
+    title:
+        "Awesome App", //this text shows when you press the recent-apps button
     home: Homepage(),
   ));
 }
@@ -31,25 +30,22 @@ class Homepage extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
             boxShadow: [
               BoxShadow(
-                color: Colors.grey[600],
-                blurRadius: 5,
-                // spreadRadius: 10
-                offset: Offset(2.0, 5.0)
-              )
+                  color: Colors.grey[600],
+                  blurRadius: 5,
+                  // spreadRadius: 10
+                  offset: Offset(2.0, 5.0))
             ],
             color: Colors.amberAccent,
-            gradient: LinearGradient(
-              colors: [Colors.yellow, Colors.pink]
+            gradient: LinearGradient(colors: [Colors.yellow, Colors.pink]),
+          ),
+          child: Text(
+            "I am a Box",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
             ),
-          ),
-          child: Text("I am a Box",
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
-
-          ),
           ),
         ),
       ),
