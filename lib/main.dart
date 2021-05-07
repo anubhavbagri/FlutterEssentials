@@ -42,7 +42,15 @@ class Homepage extends StatelessWidget {
               colors: [Colors.yellow, Colors.pink]
             ),
           ),
-          child: Text("I am a Box"),
+          child: Text("I am a Box",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+
+          ),
+          ),
         ),
       ),
     );
