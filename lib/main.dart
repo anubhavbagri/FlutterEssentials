@@ -16,35 +16,54 @@ class Homepage extends StatelessWidget {
       appBar: AppBar(
         title: Text("Awesome App"),
       ),
-      body: Center(
-        child: Container(
-          padding: const EdgeInsets.all(8),
-          // margin: const EdgeInsets.all(8),
-          // alignment: Alignment.bottomLeft,
-          alignment: Alignment.center,
-          // color: Colors.greenAccent, : will throw error if we use decoration simultaneously
-          width: 100,
-          height: 100,
-          decoration: BoxDecoration(
-            // shape: BoxShape.circle,
-            borderRadius: BorderRadius.circular(10),
-            boxShadow: [
-              BoxShadow(
-                  color: Colors.grey[600],
-                  blurRadius: 5,
-                  // spreadRadius: 10
-                  offset: Offset(2.0, 5.0))
-            ],
-            color: Colors.amberAccent,
-            gradient: LinearGradient(colors: [Colors.yellow, Colors.pink]),
-          ),
-          child: Text(
-            "I am a Box",
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: 20,
+      // body: Column(
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Align(
+          // alignment: Alignment.centerLeft,
+          // alignment: Alignment.centerRight,
+          alignment: Alignment.bottomRight,
+          child: Container(
+            color: Colors.black,
+            // width: MediaQuery.of(context).size.width,
+            width: 200,
+            // height: MediaQuery.of(context).size.height,
+            height: 400,
+            // child: Row(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                // mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
+                // mainAxisAlignment: MainAxisAlignment.end,
+                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                // crossAxisAlignment: CrossAxisAlignment.start,
+                // crossAxisAlignment: CrossAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                // crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    width: 100,
+                    height: 100,
+                    color: Colors.red,
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    width: 100,
+                    height: 100,
+                    color: Colors.yellow,
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    width: 100,
+                    height: 100,
+                    color: Colors.green,
+                  )
+                ],
+              ),
             ),
           ),
         ),
@@ -52,8 +71,3 @@ class Homepage extends StatelessWidget {
     );
   }
 }
-
-// return Container(
-//       color: Colors.blue,
-//       child: Text("Hi Flutter"),
-//     );
