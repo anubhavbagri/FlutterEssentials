@@ -37,7 +37,7 @@ class Homepage extends StatelessWidget {
               //     "https://cdn.discordapp.com/attachments/783373214888755302/834888959644401664/anubhav.jpg"),
               currentAccountPicture: CircleAvatar(
                 backgroundImage: NetworkImage(
-                    "https://cdn.discordapp.com/attachments/783373214888755302/834888959644401664/anubhav.jpg"),
+                    "https://avatars.githubusercontent.com/u/56643117?v=4"),
               ),
             ),
             ListTile(
