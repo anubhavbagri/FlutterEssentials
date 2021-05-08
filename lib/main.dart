@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-// import 'package:flutter/cupertino.dart';
 
 void main() {
   runApp(
@@ -12,29 +11,78 @@ void main() {
   );
 }
 
-class Homepage extends StatelessWidget {
+class Homepage extends StatefulWidget {
+  @override
+  _HomepageState createState() => _HomepageState();
+}
+
+class _HomepageState extends State<Homepage> {
+  TextEditingController _nameController = TextEditingController();
+  var myText = "Change me";
+
+  @override
+  void initState() {    //for hitting an API or fetching data will be done here
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[200],
       appBar: AppBar(
         title: Text("Awesome App"),
       ),
       // body: Column(
-      body: Container(),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: SingleChildScrollView(
+          child: Card(
+            child: Column(
+              children: [
+                Image.asset(
+                  "assets/bg.jpg",
+                  fit: BoxFit.cover,
+                  // fit: BoxFit.contain,
+                  // fit: BoxFit.fitWidth,
+                  // fit: BoxFit.fill,
+                  // width: 100,
+                  // height: 100,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  myText,
+                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: TextField(
+                    controller: _nameController,
+                    // keyboardType: TextInputType.number,
+                    keyboardType: TextInputType.text,
+                    // obscureText: true,
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        hintText: "Enter something here",
+                        labelText: "Name"),
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            // DrawerHeader(
-            //   child: Text("Hi, I am Anubhav",
-            //       style: TextStyle(color: Colors.white)),
-            //   decoration: BoxDecoration(color: Colors.purple),
-            // ),
             UserAccountsDrawerHeader(
               accountName: Text("Anubhav Bagri"),
               accountEmail: Text("anubhavbagri01@gmail.com"),
-              // currentAccountPicture: Image.network(
-              //     "https://cdn.discordapp.com/attachments/783373214888755302/834888959644401664/anubhav.jpg"),
               currentAccountPicture: CircleAvatar(
                 backgroundImage: NetworkImage(
                     "https://avatars.githubusercontent.com/u/56643117?v=4"),
@@ -55,13 +103,12 @@ class Homepage extends StatelessWidget {
           ],
         ),
       ),
-      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      // floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      // floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: Icon(Icons.edit),
-        // mini: true,
+        onPressed: () {
+          myText = _nameController.text;
+          setState(() {});
+        },
+        child: Icon(Icons.refresh),
       ),
     );
   }
