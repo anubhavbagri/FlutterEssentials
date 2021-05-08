@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 // import 'package:flutter/cupertino.dart';
 
 void main() {
-  runApp(MaterialApp(
-    title:
-        "Awesome App", //this text shows when you press the recent-apps button
-    home: Homepage(),
-  ));
+  runApp(
+    MaterialApp(
+      title:
+          "Awesome App", //this text shows when you press the recent-apps button
+      home: Homepage(),
+      theme: ThemeData(primarySwatch: Colors.purple),
+    ),
+  );
 }
 
 class Homepage extends StatelessWidget {
@@ -17,56 +20,48 @@ class Homepage extends StatelessWidget {
         title: Text("Awesome App"),
       ),
       // body: Column(
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Align(
-          // alignment: Alignment.centerLeft,
-          // alignment: Alignment.centerRight,
-          alignment: Alignment.bottomRight,
-          child: Container(
-            color: Colors.black,
-            // width: MediaQuery.of(context).size.width,
-            width: 200,
-            // height: MediaQuery.of(context).size.height,
-            height: 400,
-            // child: Row(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                // mainAxisAlignment: MainAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.start,
-                // mainAxisAlignment: MainAxisAlignment.end,
-                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                // mainAxisAlignment: MainAxisAlignment.spaceAround,
-                // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                // crossAxisAlignment: CrossAxisAlignment.start,
-                // crossAxisAlignment: CrossAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                // crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Container(
-                    padding: const EdgeInsets.all(8),
-                    width: 100,
-                    height: 100,
-                    color: Colors.red,
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(8),
-                    width: 100,
-                    height: 100,
-                    color: Colors.yellow,
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(8),
-                    width: 100,
-                    height: 100,
-                    color: Colors.green,
-                  )
-                ],
+      body: Container(),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            // DrawerHeader(
+            //   child: Text("Hi, I am Anubhav",
+            //       style: TextStyle(color: Colors.white)),
+            //   decoration: BoxDecoration(color: Colors.purple),
+            // ),
+            UserAccountsDrawerHeader(
+              accountName: Text("Anubhav Bagri"),
+              accountEmail: Text("anubhavbagri01@gmail.com"),
+              // currentAccountPicture: Image.network(
+              //     "https://cdn.discordapp.com/attachments/783373214888755302/834888959644401664/anubhav.jpg"),
+              currentAccountPicture: CircleAvatar(
+                backgroundImage: NetworkImage(
+                    "https://cdn.discordapp.com/attachments/783373214888755302/834888959644401664/anubhav.jpg"),
               ),
             ),
-          ),
+            ListTile(
+              leading: Icon(Icons.person),
+              title: Text("Account"),
+              subtitle: Text("Anubhav Bagri"),
+              trailing: Icon(Icons.edit),
+            ),
+            ListTile(
+              leading: Icon(Icons.email),
+              title: Text("Email"),
+              subtitle: Text("oyebagri@gmail.com"),
+              trailing: Icon(Icons.send),
+            )
+          ],
         ),
+      ),
+      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      // floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      // floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.edit),
+        // mini: true,
       ),
     );
   }
