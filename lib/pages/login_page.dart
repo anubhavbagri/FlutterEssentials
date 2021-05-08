@@ -1,5 +1,6 @@
 import 'package:awesomeapp/bg_image.dart';
-import 'package:awesomeapp/pages/home_page.dart';
+import 'package:awesomeapp/utils/constants.dart';
+// import 'package:awesomeapp/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -56,11 +57,8 @@ class _LoginPageState extends State<LoginPage> {
                           padding: const EdgeInsets.all(8.0),
                           child: ElevatedButton(
                             onPressed: () {
-                              // Navigator.push(
-                              //     context,
-                              //     MaterialPageRoute(
-                              //         builder: (context) => Homepage()));
-                              Navigator.pushNamed(context, "/home");
+                              Constants.prefs.setBool("loggedIn", true);
+                              Navigator.pushReplacementNamed(context, "/home");
                               // Navigator.pop(context);
                             },
                             child: Text("Sign in"),

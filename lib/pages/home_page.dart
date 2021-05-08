@@ -1,3 +1,4 @@
+import 'package:awesomeapp/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:http/http.dart' as http;
@@ -37,6 +38,14 @@ class _HomepageState extends State<Homepage> {
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
         title: Text("Awesome App"),
+        actions: [
+          IconButton(
+              icon: Icon(Icons.exit_to_app),
+              onPressed: () {
+                Constants.prefs.setBool("loggedIn", false);
+                Navigator.pushReplacementNamed(context, '/login');
+              })
+        ],
       ),
       // body: Column(
       body: Padding(
