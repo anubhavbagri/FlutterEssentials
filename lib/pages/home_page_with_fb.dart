@@ -6,30 +6,13 @@ import 'dart:convert';
 
 import '../widgets/drawer.dart';
 
-class Homepage extends StatefulWidget {
-  @override
-  _HomepageState createState() => _HomepageState();
-}
-
-class _HomepageState extends State<Homepage> {
-  TextEditingController _nameController = TextEditingController();
-  var myText = "Change me";
-  var data;
-
-  @override
-  void initState() {
-    //for hitting an API or fetching data will be done here
-    super.initState();
-    getData();
-  }
-
-  getData() async {
+class HomepageFB extends StatelessWidget {
+  Future getData() async {
     var res = await http
         .get(Uri.parse("https://jsonplaceholder.typicode.com/photos"));
-    // print(res.body);
-    data = jsonDecode(res.body);
+    var data = jsonDecode(res.body);
     print(data);
-    setState(() {});
+    return data;
   }
 
   @override
@@ -48,34 +31,47 @@ class _HomepageState extends State<Homepage> {
         ],
       ),
       // body: Column(
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: data != null
-            // ? GridView.builder(
-            //     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            //         crossAxisCount: 2),
-            ? ListView.builder(
+      body: FutureBuilder(
+        future: getData(),
+        // ignore: missing_return
+        builder: (context, snapshot) {
+          switch (snapshot.connectionState) {
+            case ConnectionState.none:
+              return Center(
+                child: Text("Fetch Something"),
+              );
+            case ConnectionState.active:
+            case ConnectionState.waiting:
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            case ConnectionState.done:
+              if (snapshot.hasError) {
+                return Center(
+                  child: Text("Some Error Occured"),
+                );
+              }
+              return ListView.builder(
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: ListTile(
-                      title: Text(data[index]["title"]),
-                      subtitle: Text("ID: ${data[index]["id"]}"),
-                      leading: Image.network(data[index]["url"]),
+                      title: Text(snapshot.data[index]["title"]),
+                      subtitle: Text("ID: ${snapshot.data[index]["id"]}"),
+                      leading: Image.network(snapshot.data[index]["url"]),
                     ),
                   );
                 },
-                itemCount: data.length,
-              )
-            : Center(
-                child: CircularProgressIndicator(),
-              ),
+                itemCount: snapshot.data.length,
+              );
+          }
+        },
       ),
       drawer: MyDrawer(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          myText = _nameController.text;
-          setState(() {});
+          // myText = _nameController.text;
+          // setState(() {});
         },
         child: Icon(Icons.refresh),
       ),
