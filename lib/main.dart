@@ -1,7 +1,7 @@
 // import 'package:awesomeapp/pages/home_page.dart';
 // import 'dart:js';
 
-import 'package:awesomeapp/pages/home_page_with_fb.dart';
+import 'package:awesomeapp/pages/home_page_with_sb.dart';
 import 'package:awesomeapp/pages/login_page.dart';
 import 'package:awesomeapp/pages/home_page.dart';
 import 'package:awesomeapp/utils/constants.dart';
@@ -18,7 +18,7 @@ Future main() async {
         debugShowCheckedModeBanner: false,
         title:
             "Awesome App", //this text shows when you press the recent-apps button
-        home: Constants.prefs.getBool("loggedIn") == true ? HomepageFB() : LoginPage(),
+        home: Constants.prefs.getBool("loggedIn") == true ? HomepageSB() : LoginPage(),
         theme: ThemeData(primarySwatch: Colors.blue),
         routes: {
           "/login": (context) => LoginPage(),
