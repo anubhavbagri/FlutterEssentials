@@ -2,6 +2,16 @@
 
 A new Flutter project.
 
+## Screenshots
+
+<table>
+<tr>
+    <td><img src="img/ss1.png"></td>
+    <td><img src="img/ss2.png"></td>
+    <td><img src="img/ss3.png"></td>
+ </tr>
+ </table>
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
